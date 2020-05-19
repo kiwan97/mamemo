@@ -1,0 +1,12 @@
+extends layouts/main
+
+block content
+    form(action="/login",method="post")
+        span email
+        input(type="email",name="email")
+        br
+        span password
+        input(type="password", name="password")
+        input(type="submit")
+        
+    
