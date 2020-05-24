@@ -1,2 +1,10 @@
 .header
-    span Mamemo
+    span
+        a(href="/") Mamemo
+    if(user)
+        span LOGGED
+    if(!user)
+        a(href="/login") LOGIN
+        a(href="/join") JOIN
+    if(user)
+        a(href="/logout") LOGOUT

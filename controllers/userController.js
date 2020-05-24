@@ -33,3 +33,8 @@ export const postLogin = passport.authenticate("local", {
   failureRedirect: "/login",
   successRedirect: "/"
 });
+
+export const getLogout = (req, res) => {
+  req.logout();
+  res.redirect("/");
+};

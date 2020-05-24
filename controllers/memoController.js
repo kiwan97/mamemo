@@ -10,6 +10,7 @@ export const memoUploads = async (req,res) => {
     res.redirect("/");
 }
 export const homeMemo = async (req,res) => {
+    console.log("req locals : " + req);
     try{
         const memos= await Memo.find({}).sort({ createdAt: -1 });
         res.render("home",{memos});

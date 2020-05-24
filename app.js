@@ -3,14 +3,18 @@ import morgan from "morgan";
 import helmet from "helmet";
 import passport from "passport";
 import bodyParser from "body-parser";
+import mongoose from "mongoose";
 import session from "express-session";
+import MongoStore from "connect-mongo";
 import cookieParser from "cookie-parser";
 import {memoUploads,homeMemo} from "./controllers/memoController"; 
-import {getJoin,postJoin,getLogin,postLogin} from "./controllers/userController";
+import {getJoin,postJoin,getLogin,postLogin,getLogout} from "./controllers/userController";
 
 import "./passport";
 // var express = require('express');
 const app = express();
+
+const CokieStore = MongoStore(session);
 
 const middleWares = (req,res,next) =>{
     res.locals.user = req.user || null;
@@ -22,23 +26,29 @@ const middleWares = (req,res,next) =>{
 const handleProfile = (req,res) => res.send("Profile");
 // app.listen(5000,handleListening);
 
-app.use(
-    session({
-      secret: process.env.COOKIE_HASH,
-      resave: true,
-      saveUninitialized: false
-    })
-  );
+
 app.set("view engine", "pug");
 
-app.use(middleWares);
 app.use(cookieParser());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended:true}));
 app.use(morgan("dev"));
 app.use(helmet());
+app.use(
+    session({
+        secret: process.env.COOKIE_HASH,
+        resave: true,
+        saveUninitialized: false,
+        store: new CokieStore({ mongooseConnection: mongoose.connection })
+    })
+    );
 app.use(passport.initialize());
 app.use(passport.session());
+
+app.use(middleWares);
+
+console.log(process.env.COOKIE_HASH);
+
 
 app.get('/', homeMemo);
 app.post("/memo",memoUploads);
@@ -48,6 +58,8 @@ app.post("/join",postJoin,postLogin);
 
 app.get("/login",getLogin);
 app.post("/login",postLogin);
+
+app.get("/logout",getLogout);
 
 app.get('/profile',handleProfile);
 

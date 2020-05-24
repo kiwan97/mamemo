@@ -1,5 +1,5 @@
-import app from "./app";
 import "./db";
+import app from "./app";
 
 const handleListening =()=> console.log("Listening - localhost:5000");
 
