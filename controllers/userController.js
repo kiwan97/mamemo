@@ -38,3 +38,7 @@ export const getLogout = (req, res) => {
   req.logout();
   res.redirect("/");
 };
+
+export const googleLoginCallback = (accessToken, refreshToken, profile, cb) => {
+  console.log(accessToken, refreshToken, profile, cb);
+};

@@ -7,6 +7,7 @@ import mongoose from "mongoose";
 import session from "express-session";
 import MongoStore from "connect-mongo";
 import cookieParser from "cookie-parser";
+import {middleWares,onlyPrivate,onlyPublic} from "./middlewares"
 import {memoUploads,homeMemo} from "./controllers/memoController"; 
 import {getJoin,postJoin,getLogin,postLogin,getLogout} from "./controllers/userController";
 
@@ -16,11 +17,7 @@ const app = express();
 
 const CokieStore = MongoStore(session);
 
-const middleWares = (req,res,next) =>{
-    res.locals.user = req.user || null;
-    console.log(req.user);
-    next();
-}
+
 // respond with "hello world" when a GET request is made to the homepage
 
 const handleProfile = (req,res) => res.send("Profile");
@@ -53,14 +50,24 @@ console.log(process.env.COOKIE_HASH);
 app.get('/', homeMemo);
 app.post("/memo",memoUploads);
 
-app.get("/join",getJoin);
-app.post("/join",postJoin,postLogin);
+app.get("/join",onlyPublic,getJoin);
+app.post("/join",onlyPublic,postJoin,postLogin);
 
-app.get("/login",getLogin);
-app.post("/login",postLogin);
+app.get("/login",onlyPublic,getLogin);
+app.post("/login",onlyPublic,postLogin);
 
-app.get("/logout",getLogout);
+app.get("/logout",onlyPrivate,getLogout);
 
-app.get('/profile',handleProfile);
+app.get('/profile',onlyPrivate,handleProfile);
+
+app.get('/auth/google',
+  passport.authenticate('google', { scope: ['profile'] }));
+
+app.get('/auth/google/callback', 
+  passport.authenticate('google', { failureRedirect: '/login' }),
+  function(req, res) {
+    // Successful authentication, redirect home.
+    res.redirect('/');
+  });
 
 export default app;
