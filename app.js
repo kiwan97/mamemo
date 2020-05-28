@@ -9,7 +9,7 @@ import MongoStore from "connect-mongo";
 import cookieParser from "cookie-parser";
 import {middleWares,onlyPrivate,onlyPublic} from "./middlewares"
 import {memoUploads,homeMemo} from "./controllers/memoController"; 
-import {getJoin,postJoin,getLogin,postLogin,getLogout} from "./controllers/userController";
+import {getJoin,postJoin,getLogin,postLogin,getLogout,postGoogleLogin} from "./controllers/userController";
 
 import "./passport";
 // var express = require('express');
@@ -25,6 +25,8 @@ const handleProfile = (req,res) => res.send("Profile");
 
 
 app.set("view engine", "pug");
+
+app.use("/static", express.static("static"));
 
 app.use(cookieParser());
 app.use(bodyParser.json());
@@ -44,7 +46,6 @@ app.use(passport.session());
 
 app.use(middleWares);
 
-console.log(process.env.COOKIE_HASH);
 
 
 app.get('/', homeMemo);
@@ -61,13 +62,11 @@ app.get("/logout",onlyPrivate,getLogout);
 app.get('/profile',onlyPrivate,handleProfile);
 
 app.get('/auth/google',
-  passport.authenticate('google', { scope: ['profile'] }));
+  passport.authenticate('google', { scope: ['profile','email'] }));
 
 app.get('/auth/google/callback', 
   passport.authenticate('google', { failureRedirect: '/login' }),
-  function(req, res) {
-    // Successful authentication, redirect home.
-    res.redirect('/');
-  });
+  postGoogleLogin
+);
 
 export default app;

@@ -6,14 +6,20 @@ export const memoUploads = async (req,res) => {
     } = req;
     const newMemo = await Memo.create({
         text: memo,
+        creator: req.user.id
     });
     res.redirect("/");
 }
 export const homeMemo = async (req,res) => {
     console.log("req locals : " + req);
     try{
-        const memos= await Memo.find({}).sort({ createdAt: -1 });
+        if(req.user){
+        // const memos= await Memo.find({}).sort({ createdAt: -1 });
+        const memos = await Memo.find({creator:req.user.id})
         res.render("home",{memos});
+        }else{
+            res.render("home",{});
+        }
     }catch(error){
         console.log(error);
         res.redirect("/");

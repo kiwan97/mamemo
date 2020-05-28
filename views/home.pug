@@ -3,10 +3,12 @@ extends layouts/main
 block content
     form(action="/memo",method="post")
         input(type="text",name="memo")
-    each memo in memos
-        span=memo.text
-        br
-        span=memo.createdAt
-        br
+    if(memos)
+        each memo in memos
+            span=memo.text
+            br
+            span=memo.createdAt
+            br
+            span=memo.creator
         
     

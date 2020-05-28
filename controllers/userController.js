@@ -39,6 +39,33 @@ export const getLogout = (req, res) => {
   res.redirect("/");
 };
 
-export const googleLoginCallback = (accessToken, refreshToken, profile, cb) => {
-  console.log(accessToken, refreshToken, profile, cb);
+export const googleLoginCallback = async (accessToken, refreshToken, profile, cb) => {
+  console.log(profile);
+  const {
+    _json: { name, email,picture }
+  } = profile;
+  console.log("picture : "+picture);
+  try {
+    const user = await User.findOne({ email });
+    if (user) {
+      user.picture = picture;
+      user.save();
+      console.log(user.picture);
+      return cb(null, user);
+    }
+    const newUser = await User.create({
+      email,
+      name,
+      picture
+    });
+    return cb(null, newUser);
+  } catch (error) {
+    return cb(error);
+  }
+};
+
+export const postGoogleLogin = (req, res) => {
+  // Successful authentication, redirect home.
+  console.log("Successful authentication, redirect home.");
+  res.redirect("/");
 };

@@ -3,7 +3,8 @@ import passportLocalMongoose from "passport-local-mongoose";
 
 const UserSchema = new mongoose.Schema({
   name: String,
-  email: String
+  email: String,
+  picture: String
 });
 
 UserSchema.plugin(passportLocalMongoose, { usernameField: "email" });

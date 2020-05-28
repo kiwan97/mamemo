@@ -3,6 +3,7 @@ html
     head
         link(rel="stylesheet", href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU", crossorigin="anonymous")
         title Mamemo
+        link(rel="stylesheet", href="/static/styles.css")
     body
         header
             include ../partials/header.pug
@@ -10,3 +11,4 @@ html
             block content
         footer
             include ../partials/footer.pug
+        script(src="/static/main.js") 
