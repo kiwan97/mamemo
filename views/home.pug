@@ -4,11 +4,13 @@ block content
     form(action="/memo",method="post")
         input(type="text",name="memo")
     if(memos)
-        each memo in memos
-            span=memo.text
-            br
-            span=memo.createdAt
-            br
-            span=memo.creator
+        div.memotable
+            each memo in memos
+                div.memowrap
+                    span=memo.text
+                    br
+                    span=memo.createdAt
+                    br
+                    span=memo.creator
         
     

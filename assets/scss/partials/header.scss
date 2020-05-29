@@ -1,0 +1,26 @@
+.header{
+    display: flex;
+    justify-content: space-between;
+    background-color: white;
+    padding: 5px;
+    .loggo{
+        a{
+            font-size: 50px;
+            text-decoration: none;
+        }
+    }
+    .user_wrap{
+        display: flex;
+        & > * {
+            margin: 5px;
+        }
+        align-items: center;
+        padding: 5px;
+        font-size: 20px;
+        
+        img{
+            width: 50px;
+            height: 50px;
+        }
+    }
+}
