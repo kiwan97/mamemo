@@ -4,10 +4,12 @@ export const memoUploads = async (req,res) => {
     const{
         body: {memo}
     } = req;
-    const newMemo = await Memo.create({
-        text: memo,
-        creator: req.user.id
-    });
+    if(memo!=null && memo!=""){
+        const newMemo = await Memo.create({
+            text: memo,
+            creator: req.user.id
+        });
+    }
     res.redirect("/");
 }
 export const homeMemo = async (req,res) => {
@@ -24,5 +26,17 @@ export const homeMemo = async (req,res) => {
         console.log(error);
         res.redirect("/");
     }
+}
+
+export const deleteMemo = async (req,res) =>{
+    const {
+        params:{
+            id
+        }
+    } = req;
+    try {
+        await Memo.findOneAndRemove({ _id: id });
+      } catch (error) {}
+    res.redirect("/");
 }
   

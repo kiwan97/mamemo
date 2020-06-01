@@ -8,7 +8,7 @@ import session from "express-session";
 import MongoStore from "connect-mongo";
 import cookieParser from "cookie-parser";
 import {middleWares,onlyPrivate,onlyPublic} from "./middlewares"
-import {memoUploads,homeMemo} from "./controllers/memoController"; 
+import {memoUploads,homeMemo,deleteMemo} from "./controllers/memoController"; 
 import {getJoin,postJoin,getLogin,postLogin,getLogout,postGoogleLogin} from "./controllers/userController";
 
 import "./passport";
@@ -68,5 +68,7 @@ app.get('/auth/google/callback',
   passport.authenticate('google', { failureRedirect: '/login' }),
   postGoogleLogin
 );
+
+app.get('/:id/delete',deleteMemo);
 
 export default app;

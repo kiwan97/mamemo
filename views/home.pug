@@ -2,15 +2,18 @@ extends layouts/main
 
 block content
     form(action="/memo",method="post")
-        input(type="text",name="memo")
+        div.memo_container
+            input.addBtn(type="submit",value="+")
+            input.memowrap(type="text",name="memo")
     if(memos)
-        div.memotable
-            each memo in memos
-                div.memowrap
-                    span=memo.text
-                    br
-                    span=memo.createdAt
-                    br
-                    span=memo.creator
+        each memo in memos
+            div.memowrap
+                span=memo.text
+                br
+                span=memo.createdAt
+                br
+                span=memo.creator
+                a(href= `/${memo._id}/delete`)
+                    button.delbtn X
         
     

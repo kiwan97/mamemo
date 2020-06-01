@@ -3,7 +3,8 @@ import dotenv from "dotenv";
 
 dotenv.config();
 mongoose.connect(
-    "mongodb://localhost:27017/mamemo",
+    // "mongodb://localhost:27017/mamemo",
+    process.env.MONGODB_AWS_LINK,
     {
       useNewUrlParser: true,
       useFindAndModify: false,
