@@ -1,12 +1,15 @@
 .header
     span.loggo
-        a(href="/") Mamemo
+        a(href="/") mamemo
     div.user_wrap
         if(!user)
-            a(href="/login") LOGIN
-            a(href="/join") JOIN
+            a(href="/login")
+                button LOGIN
+            a(href="/join")
+                button JOIN
         if(user)
-            button(href="/logout") LOGOUT
+            a(href="/logout")
+                button LOGOUT
             span=user.name
             img(src=user.picture, alt="!")
     

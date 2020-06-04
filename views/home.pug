@@ -4,16 +4,16 @@ block content
     form(action="/memo",method="post")
         div.memo_container
             input.addBtn(type="submit",value="+")
-            input.memowrap(type="text",name="memo")
+            textarea(name="memo", cols="30", rows="10",style="resize: none;").memoinput
     if(memos)
-        each memo in memos
+        each memo,idx in memos
             div.memowrap
                 span=memo.text
-                br
-                span=memo.createdAt
-                br
-                span=memo.creator
-                a(href= `/${memo._id}/delete`)
-                    button.delbtn X
+                div.delbtn_wrap
+                    a(href= `/${memo._id}/delete`)
+                        button.delbtn
+                            i.fas.fa-trash-alt
+                .date_box
+                    span=dates[idx]
         
     
