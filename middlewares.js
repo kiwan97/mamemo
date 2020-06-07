@@ -6,7 +6,7 @@ export const middleWares = (req,res,next) =>{
 
 export const onlyPublic = (req, res, next) => {
     if (req.user) {
-      res.redirect("/");
+      res.redirect("/front");
     } else {
       next();
     }
@@ -16,6 +16,6 @@ export const onlyPublic = (req, res, next) => {
     if (req.user) {
       next();
     } else {
-      res.redirect("/");
+      res.redirect("/front");
     }
   };

@@ -8,7 +8,7 @@ import session from "express-session";
 import MongoStore from "connect-mongo";
 import cookieParser from "cookie-parser";
 import {middleWares,onlyPrivate,onlyPublic} from "./middlewares"
-import {memoUploads,homeMemo,deleteMemo} from "./controllers/memoController"; 
+import {memoUploads,homeMemo,deleteMemo,getFront} from "./controllers/memoController"; 
 import {getJoin,postJoin,getLogin,postLogin,getLogout,postGoogleLogin} from "./controllers/userController";
 
 import "./passport";
@@ -48,7 +48,8 @@ app.use(middleWares);
 
 
 
-app.get('/', homeMemo);
+app.get('/',onlyPrivate, homeMemo);
+app.get('/front',onlyPublic,getFront);
 app.post("/memo",memoUploads);
 
 app.get("/join",onlyPublic,getJoin);

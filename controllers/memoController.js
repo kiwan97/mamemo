@@ -45,4 +45,8 @@ export const deleteMemo = async (req,res) =>{
       } catch (error) {}
     res.redirect("/");
 }
+
+export const getFront = (req,res) => {
+    res.render("front");
+}
   

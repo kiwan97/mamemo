@@ -1,0 +1,42 @@
+.front_body{
+    background-image:
+    url('https://images.pexels.com/photos/1563356/pexels-photo-1563356.jpeg?cs=srgb&dl=concrete-road-between-trees-1563356.jpg&fm=jpg');
+    background-size: 100%;
+    text-align: center;
+    padding-top: 15%;
+    & > * {
+        margin-top: 20px;
+        display: inline-block;
+    }
+    button{
+        font-size: 20px;
+        border: none;
+        border-radius: 5px;
+    }
+    button:focus{
+        outline: none;
+    
+    }
+}
+.front_loggo{
+    background-color: rgba( 255, 255, 255, 0.5 );
+    color: #c0392b;
+    font-size: 60px;
+}
+.front_local{
+    button{
+        background-color: #2ecc71;
+    }
+}
+.front_google{
+    button{
+        background-color: #ecf0f1;
+    }
+}
+.front_login_wrap{
+    width: 200px;
+    button{
+        width: 100%;
+        padding: 10px;
+    }
+}
