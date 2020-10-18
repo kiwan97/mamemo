@@ -1,0 +1,217 @@
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline; }
+
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section {
+  display: block; }
+
+body {
+  line-height: 1; }
+
+ol, ul {
+  list-style: none; }
+
+blockquote, q {
+  quotes: none; }
+
+blockquote:before, blockquote:after {
+  content: '';
+  content: none; }
+
+q:before, q:after {
+  content: '';
+  content: none; }
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0; }
+
+body {
+  position: relative;
+  width: 100%;
+  min-height: 100%;
+  background-color: yellowgreen; }
+
+main {
+  overflow: hidden; }
+
+.header {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+     -moz-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  background-color: white;
+  padding: 5px; }
+  .header .loggo a {
+    font-size: 50px;
+    text-decoration: none;
+    color: brown; }
+  .header .user_wrap {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -webkit-align-items: center;
+       -moz-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    padding: 5px;
+    font-size: 20px; }
+    .header .user_wrap > * {
+      margin: 5px; }
+    .header .user_wrap button {
+      color: rgba(30, 22, 54, 0.6);
+      -webkit-box-shadow: rgba(30, 22, 54, 0.4) 0 0px 0px 2px inset;
+         -moz-box-shadow: rgba(30, 22, 54, 0.4) 0 0px 0px 2px inset;
+              box-shadow: rgba(30, 22, 54, 0.4) 0 0px 0px 2px inset; }
+    .header .user_wrap button:hover {
+      color: rgba(255, 255, 255, 0.85);
+      -webkit-box-shadow: rgba(30, 22, 54, 0.7) 0 0px 0px 40px inset;
+         -moz-box-shadow: rgba(30, 22, 54, 0.7) 0 0px 0px 40px inset;
+              box-shadow: rgba(30, 22, 54, 0.7) 0 0px 0px 40px inset; }
+    .header .user_wrap img {
+      width: 50px;
+      height: 50px;
+      -webkit-border-radius: 10px;
+         -moz-border-radius: 10px;
+              border-radius: 10px; }
+
+.memo_container {
+  background-color: #F9F186;
+  -webkit-border-radius: 5px;
+     -moz-border-radius: 5px;
+          border-radius: 5px;
+  position: relative;
+  padding: 10px;
+  margin: 10px;
+  width: 200px;
+  height: 200px;
+  float: left; }
+  .memo_container .memoinput {
+    width: 200px;
+    height: 200px;
+    outline: none;
+    border-width: 0px;
+    border: none;
+    background-color: transparent; }
+    .memo_container .memoinput:focus {
+      outline: none;
+      border: none; }
+
+.memowrap {
+  background-color: #F9F186;
+  -webkit-border-radius: 5px;
+     -moz-border-radius: 5px;
+          border-radius: 5px;
+  padding: 10px;
+  margin: 10px;
+  width: 200px;
+  height: 200px;
+  float: left; }
+
+.addBtn {
+  width: 30px;
+  height: 30px;
+  background-color: transparent;
+  color: black;
+  text-align: center;
+  position: absolute;
+  font-size: 20px;
+  top: 190px;
+  left: 190px;
+  border: none; }
+
+.delbtn_wrap {
+  width: 30px;
+  height: 30px;
+  background-color: transparent;
+  color: black;
+  text-align: center;
+  position: absolute;
+  font-size: 20px; }
+
+.date_box {
+  position: relative;
+  top: 170px;
+  width: 80px; }
+
+.delbtn {
+  position: relative;
+  left: 180px;
+  top: 170px;
+  color: black;
+  border: none;
+  background-color: transparent; }
+  .delbtn:focus {
+    outline: none;
+    border: none; }
+
+.footer {
+  position: absolute;
+  width: 100%;
+  height: 50px;
+  background-color: white;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+     -moz-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+     -moz-box-align: center;
+      -ms-flex-align: center;
+          align-items: center; }
+
+.front_body {
+  background-image: url("https://images.pexels.com/photos/1563356/pexels-photo-1563356.jpeg?cs=srgb&dl=concrete-road-between-trees-1563356.jpg&fm=jpg");
+  -webkit-background-size: 100% 100%;
+     -moz-background-size: 100%;
+          background-size: 100%;
+  text-align: center;
+  padding-top: 15%; }
+  .front_body > * {
+    margin-top: 20px;
+    display: inline-block; }
+  .front_body button {
+    font-size: 20px;
+    border: none;
+    -webkit-border-radius: 5px;
+       -moz-border-radius: 5px;
+            border-radius: 5px; }
+  .front_body button:focus {
+    outline: none; }
+
+.front_loggo {
+  background-color: rgba(255, 255, 255, 0.5);
+  color: #c0392b;
+  font-size: 60px; }
+
+.front_local button {
+  background-color: #2ecc71; }
+
+.front_google button {
+  background-color: #ecf0f1; }
+
+.front_login_wrap {
+  width: 200px; }
+  .front_login_wrap button {
+    width: 100%;
+    padding: 10px; }
